@@ -27,7 +27,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceChanged(SurfaceHolder surfaceHolder, int format, int width, int height) {
 
     }
-
+    
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
         boolean retry = true;
@@ -42,10 +42,17 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    /**
+     * Updates the positions of all game elements.
+     */
     public void update() {
 
     }
 
+    /**
+     * Draws the game elements and their current positions to the screen.
+     * @param canvas the canvas used to draw images to the screen
+     */
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
