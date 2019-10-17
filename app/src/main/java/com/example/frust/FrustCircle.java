@@ -52,6 +52,18 @@ public class FrustCircle extends FrustShape {
     }
 
     /**
+     * Changes the baseRadius by the given integer. A positive value will make the radius grow and
+     * a negative value will make it shrink. Resets to zero if it falls below zero.
+     * @param amount the value the base radius gets changed by
+     */
+    public void changeBaseRadiusBy(int amount) {
+        baseRadius += amount;
+        if (baseRadius < 0) {
+            baseRadius = 0;
+        }
+    }
+
+    /**
      * Gets the current baseRadius.
      * @return the current baseRadius.
      */
@@ -66,6 +78,18 @@ public class FrustCircle extends FrustShape {
     public void setCurrentRadius(int currentRadius) {
         if (currentRadius >= 0) {
             this.currentRadius = currentRadius;
+        }
+    }
+
+    /**
+     * Changes the currentRadius by the given integer. A positive value will make the radius grow and
+     * a negative value will make it shrink. Resets to zero if it falls below zero.
+     * @param amount the value the base radius gets changed by
+     */
+    public void changeCurrentRadiusBy(int amount) {
+        currentRadius += amount;
+        if (currentRadius < 0) {
+            currentRadius = 0;
         }
     }
 
