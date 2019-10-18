@@ -39,7 +39,6 @@ public class ClassicLevel extends Level {
         currentSpeed = minSpeed;
         speedIncrease = 0.15f * (int) (levelNumber / 4 + 1);
 
-
     }
 
     /**

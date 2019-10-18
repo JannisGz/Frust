@@ -1,6 +1,7 @@
 package com.example.frust;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -22,25 +23,35 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private ArrayList<FrustShape> enemies;
     private Level currentLevel;
     private int score;
+    private int levelNumber;
+    private int goal;
+
+    private DrawingManager drawingManager;
 
     /**
      * Creates a new GameView with the given context. Creates a new GameThread that refreshes the
      * GameView every tick (about 30 times/second)
-     * Starts the game with a avoidance mode level.
+     * Starts the game with a classic mode level. Initializes all paints used for drawing.
      * @param context the given context
      */
     public GameView(Context context) {
         super(context);
         getHolder().addCallback(this);
+
         gameThread = new GameThread(getHolder(), this);
         setFocusable(true);
 
         score = 0;
-        currentLevel = new ClassicLevel(1,0, 20, getWidth(), getHeight());
+        levelNumber = 1;
+        goal = 20;
+
+        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+        currentLevel = new ClassicLevel(levelNumber,score, goal, screenWidth, screenHeight);
+        drawingManager = new DrawingManager(screenWidth, screenHeight);
+
         target = currentLevel.getTarget();
         enemies = currentLevel.getEnemies();
-
-
 
     }
 
@@ -77,6 +88,20 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         currentLevel.onTick();
         target = currentLevel.getTarget();
         enemies = currentLevel.getEnemies();
+        score = currentLevel.getScore();
+
+        if (currentLevel.gameover) {
+            // To Do: Implement game over scenario
+        } else if (currentLevel.goalIsReached()) {
+            // To Do: Improve next level choosing
+            levelNumber ++;
+            goal ++;
+            currentLevel = new ClassicLevel(levelNumber,score, goal, getWidth(), getHeight());
+        }
+    }
+
+    public void onTouch() {
+
     }
 
     /**
@@ -86,11 +111,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
+
         if (!currentLevel.isGameover()) {
-            
+            drawingManager.drawEnemies(canvas, enemies);
+            drawingManager.drawTarget(canvas, target);
         }
-        //draw enemies
-        //draw target
-        //draw score
+
+        drawingManager.drawInterface(canvas, score, levelNumber);
     }
 }

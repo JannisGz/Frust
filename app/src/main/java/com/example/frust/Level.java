@@ -86,7 +86,7 @@ public abstract class Level {
      * constructor
      * @return true if the current progess is equal or greater than the goal
      */
-    public boolean goalReached() {
+    public boolean goalIsReached() {
         return currentProgress >= goal;
     }
 
@@ -102,5 +102,12 @@ public abstract class Level {
      */
     public ArrayList<FrustShape> getEnemies() {
         return enemies;
+    }
+
+    /**
+     * @return the current score
+     */
+    public int getScore() {
+        return score;
     }
 }
