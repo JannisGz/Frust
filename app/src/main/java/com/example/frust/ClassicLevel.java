@@ -1,6 +1,7 @@
 package com.example.frust;
 
 /**
+ * @author Jannis Gumz
  * The classic frust level. A green circle will appear on the screen. It will slowly decrease in
  * size. If it disappears the game is lost. If the user hits the target before it disappears, it
  * will relocate to a different position on the screen, repeating until it has been hit enough times

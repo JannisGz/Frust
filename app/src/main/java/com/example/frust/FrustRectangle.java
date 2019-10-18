@@ -1,5 +1,9 @@
 package com.example.frust;
 
+/**
+ * @author Jannis Gumz
+ * A rectangular FrustShape
+ */
 public class FrustRectangle extends FrustShape {
 
     private int width;

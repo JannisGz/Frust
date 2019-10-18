@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import java.util.ArrayList;
 
 /**
+ * @author Jannis Gumz
  * Draws the game objects, interface, interlude and game over text on the screen.
  */
 public class DrawingManager {
