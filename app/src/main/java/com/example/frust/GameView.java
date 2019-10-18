@@ -27,6 +27,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     private int score;
     private int levelNumber;
     private int goal;
+    private int screenWidth;
+    private int screenHeight;
 
     private DrawingManager drawingManager;
 
@@ -50,8 +52,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
         levelNumber = 1;
         goal = 20;
 
-        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-        int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+        screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+        screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
         currentLevel = new ClassicLevel(levelNumber,score, goal, screenWidth, screenHeight);
         drawingManager = new DrawingManager(screenWidth, screenHeight);
 
@@ -102,7 +104,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
             // To Do: Improve next level choosing
             levelNumber ++;
             goal ++;
-            currentLevel = new ClassicLevel(levelNumber,score, goal, getWidth(), getHeight());
+            currentLevel = new StarsAndStripesLevel(levelNumber,score, goal, screenWidth, screenHeight);
         }
     }
 
@@ -114,14 +116,24 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     public void draw(Canvas canvas) {
         super.draw(canvas);
 
+        target = currentLevel.getTarget();
+        enemies = currentLevel.getEnemies();
+        score = currentLevel.getScore();
+
         if (currentLevel.interludeIsRunning()) {
             drawingManager.drawInterlude(canvas, levelNumber, currentLevel.getInterludeText());
         }
         else {
             if (!currentLevel.isGameover()) {
-                drawingManager.drawEnemies(canvas, enemies);
-                drawingManager.drawTarget(canvas, target);
-                drawingManager.drawInterface(canvas, score, levelNumber);
+                if (currentLevel instanceof ClassicLevel) {
+                    drawingManager.drawEnemies(canvas, enemies);
+                    drawingManager.drawTarget(canvas, target);
+                    drawingManager.drawInterface(canvas, score, levelNumber);
+                } else if (currentLevel instanceof StarsAndStripesLevel) {
+                    drawingManager.drawTarget(canvas, target);
+                    drawingManager.drawEnemies(canvas, enemies);
+                    drawingManager.drawInterface(canvas, score, levelNumber);
+                }
             } else {
                 drawingManager.drawGameOver(canvas, score);
             }

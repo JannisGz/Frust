@@ -20,7 +20,7 @@ public abstract class Level {
     protected ArrayList<FrustShape> enemies;
 
     protected int interludeTicks = 0;
-    private static int MAX_INTERLUDE_TICKS = 100;
+    private static int MAX_INTERLUDE_TICKS = 70;
     protected String interludeText;
 
     /**
