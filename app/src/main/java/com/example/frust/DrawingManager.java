@@ -104,11 +104,17 @@ public class DrawingManager {
     }
 
     /**
-     * Draw
-     * @param canvas
+     * Draws the game over screen when an enemy has been touched
+     * @param canvas represents the screen
      */
-    public void drawGameOver(Canvas canvas) {
-        // To Do
+    public void drawGameOver(Canvas canvas, int score) {
+        negativePaint.setTextSize(textSizeBig);
+        negativePaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(String.valueOf("GAME OVER"),
+                screenWidth / 2, screenHeight / 2, negativePaint);
+        negativePaint.setTextSize(textSizeSmall);
+        canvas.drawText(String.valueOf(score + " Points"),
+                screenWidth / 2, screenHeight / 2 + screenWidth / 6, negativePaint);
     }
 
     /**
@@ -117,7 +123,6 @@ public class DrawingManager {
      * @param canvas represents the game screen
      */
     public void drawInterlude(Canvas canvas, int levelNumber, String interludeText) {
-        neutralPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         neutralPaint.setTextSize(textSizeBig);
         neutralPaint.setTextAlign(Paint.Align.CENTER);
         canvas.drawText(String.valueOf("Level " + levelNumber),

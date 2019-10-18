@@ -117,12 +117,15 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
         if (currentLevel.interludeIsRunning()) {
             drawingManager.drawInterlude(canvas, levelNumber, currentLevel.getInterludeText());
         }
-        else if (!currentLevel.isGameover()) {
-            drawingManager.drawEnemies(canvas, enemies);
-            drawingManager.drawTarget(canvas, target);
+        else {
+            if (!currentLevel.isGameover()) {
+                drawingManager.drawEnemies(canvas, enemies);
+                drawingManager.drawTarget(canvas, target);
+                drawingManager.drawInterface(canvas, score, levelNumber);
+            } else {
+                drawingManager.drawGameOver(canvas, score);
+            }
         }
-
-        drawingManager.drawInterface(canvas, score, levelNumber);
     }
 
     /**

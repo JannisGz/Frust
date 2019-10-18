@@ -59,7 +59,7 @@ public abstract class Level {
             this.displayHeight = displayHeight;
         }
 
-        interludeText = "Tap Green, Avoid Red.";
+        interludeText = "Tap Green, Avoid Red";
 
         currentProgress = 0;
         gameover = false;
