@@ -17,6 +17,7 @@ public class DrawingManager {
     private Paint negativePaint;
     private Paint neutralPaint;
     private int textSizeSmall;
+    private int textSizeMedium;
     private int textSizeBig;
     private int screenWidth;
     private int screenHeight;
@@ -33,7 +34,8 @@ public class DrawingManager {
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         textSizeSmall = screenWidth/15;
-        textSizeBig = screenWidth/10;
+        textSizeMedium = screenWidth/12;
+        textSizeBig = screenWidth/8;
 
         neutralPaint = new Paint();
         neutralPaint.setColor(Color.WHITE);
@@ -114,7 +116,14 @@ public class DrawingManager {
      * player how to beat the current level.
      * @param canvas represents the game screen
      */
-    public void drawInterlude(Canvas canvas) {
-        // To Do
+    public void drawInterlude(Canvas canvas, int levelNumber, String interludeText) {
+        neutralPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        neutralPaint.setTextSize(textSizeBig);
+        neutralPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(String.valueOf("Level " + levelNumber),
+                screenWidth / 2, screenHeight / 2, neutralPaint);
+        neutralPaint.setTextSize(textSizeSmall);
+        canvas.drawText(String.valueOf(interludeText),
+                screenWidth / 2, screenHeight / 2 + screenWidth / 6, neutralPaint);
     }
 }

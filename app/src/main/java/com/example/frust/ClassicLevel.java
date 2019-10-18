@@ -92,12 +92,16 @@ public class ClassicLevel extends Level {
      */
     @Override
     public void onTick() {
-        if (target.getCurrentRadius() <= 0) {
-            gameover = true;
+        if (interludeIsRunning()) {
+            interludeTicks++;
         } else {
-            target.changeCurrentRadiusBy(-(int) currentSpeed);
-            for (FrustShape enemy : enemies) {
-                ((FrustCircle)enemy).changeCurrentRadiusBy((int) currentSpeed);
+            if (target.getCurrentRadius() <= 0) {
+                gameover = true;
+            } else {
+                target.changeCurrentRadiusBy(-(int) currentSpeed);
+                for (FrustShape enemy : enemies) {
+                    ((FrustCircle) enemy).changeCurrentRadiusBy((int) currentSpeed);
+                }
             }
         }
     }

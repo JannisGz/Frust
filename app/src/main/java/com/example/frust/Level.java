@@ -19,6 +19,10 @@ public abstract class Level {
     protected FrustCircle target;
     protected ArrayList<FrustShape> enemies;
 
+    protected int interludeTicks = 0;
+    private static int MAX_INTERLUDE_TICKS = 100;
+    protected String interludeText;
+
     /**
      * Creates a new level with the given arguments. All parameters will be set to a
      * default value if invalid input is given.
@@ -54,6 +58,8 @@ public abstract class Level {
         } else {
             this.displayHeight = displayHeight;
         }
+
+        interludeText = "Tap Green, Avoid Red.";
 
         currentProgress = 0;
         gameover = false;
@@ -109,5 +115,21 @@ public abstract class Level {
      */
     public int getScore() {
         return score;
+    }
+
+    /**
+     * Returns if the level is in the interlude phase
+     * @return true if interludeTicks is less than MAX_INTERLUDE_TICKS
+     */
+    public boolean interludeIsRunning() {
+        return interludeTicks < MAX_INTERLUDE_TICKS;
+    }
+
+    /**
+     * Returns the text that should be displayed between two levels
+     * @return the interlude text
+     */
+    public String getInterludeText() {
+        return interludeText;
     }
 }
