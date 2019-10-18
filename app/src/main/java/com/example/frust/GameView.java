@@ -31,10 +31,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     private DrawingManager drawingManager;
 
     /**
-     * Creates a new GameView with the given context. Creates a new GameThread that refreshes the
-     * GameView every tick (about 30 times/second)
-     * Starts the game with a classic mode level. Initializes all paints used for drawing.
-     * @param context the given context
+     * Creates a new GameView, which represents the game screen, with its own GameThread that
+     * refreshes the screen every tick (about 30 times/second).
+     * Starts the game with a classic mode level.
+     * @param context the application context
      */
     public GameView(Context context) {
         super(context);
@@ -87,7 +87,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     }
 
     /**
-     * Updates the positions of all enemies and the target
+     * Updates the positions of all enemies and the target, as well as the score and checks if the
+     * levels goal is reached.
      */
     public void update() {
         currentLevel.onTick();
@@ -121,6 +122,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
         drawingManager.drawInterface(canvas, score, levelNumber);
     }
 
+    /**
+     * Registers touch events on the screen. Gets the coordinates of the touch events and checks for
+     * collision with the target and enemies.
+     * @param v the view
+     * @param event the touch event
+     * @return always false. Does not matter for this application
+     */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         int x = (int) event.getX();
