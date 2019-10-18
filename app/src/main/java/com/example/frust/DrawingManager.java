@@ -7,6 +7,9 @@ import android.graphics.Rect;
 
 import java.util.ArrayList;
 
+/**
+ * Draws the game objects, interface, interlude and game over text on the screen.
+ */
 public class DrawingManager {
 
     private Paint positivePaint;
@@ -17,6 +20,12 @@ public class DrawingManager {
     private int screenWidth;
     private int screenHeight;
 
+    /**
+     * Creates a new DrawingManager. Initializes all used paints/colors (green for positive, red
+     * for negative and white for neutral interactions) and text sizes.
+     * @param screenWidth the width of the screen in pixel
+     * @param screenHeight the height of the screen in pixel
+     */
     public DrawingManager(int screenWidth, int screenHeight) {
         // text sizes will be set to a dynamic value based on screen width when drawing methods are
         // called, because the UI most likely is not fully loaded yet.
@@ -44,6 +53,12 @@ public class DrawingManager {
         negativePaint.setTextSize(textSizeSmall);
     }
 
+    /**
+     * Draws the interface (score and level number) to the screen using white paint.
+     * @param canvas represents the screen
+     * @param score the current score
+     * @param levelNumber the current level number
+     */
     public void drawInterface(Canvas canvas, int score, int levelNumber) {
         neutralPaint.setTextAlign(Paint.Align.RIGHT);
         Rect bounds = new Rect();
@@ -58,10 +73,20 @@ public class DrawingManager {
                 neutralPaint);
     }
 
+    /**
+     * Draws the green circular target on the screen
+     * @param canvas represents the screen
+     * @param target the FrustCircle representing the target to be touched
+     */
     public void drawTarget(Canvas canvas, FrustCircle target) {
         canvas.drawCircle(target.getX(), target.getY(), target.getCurrentRadius(), positivePaint);
     }
 
+    /**
+     * Draws all red areas representing the enemies to the screen.
+     * @param canvas represents the screen
+     * @param enemies the FrustShapes represeting areas that must not be touched
+     */
     public void drawEnemies(Canvas canvas, ArrayList<FrustShape> enemies) {
         for (FrustShape enemy : enemies) {
             if (enemy instanceof FrustCircle) {
@@ -75,10 +100,19 @@ public class DrawingManager {
         }
     }
 
+    /**
+     * Draw
+     * @param canvas
+     */
     public void drawGameOver(Canvas canvas) {
         // To Do
     }
 
+    /**
+     * Draws an interlude text on the screen. Consists of the level number and instructions for the
+     * player how to beat the current level.
+     * @param canvas represents the game screen
+     */
     public void drawInterlude(Canvas canvas) {
         // To Do
     }
