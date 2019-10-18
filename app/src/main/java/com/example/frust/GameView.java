@@ -3,8 +3,10 @@ package com.example.frust;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  * The number of enemies (shapes that must be avoided), the position and behavior of enemies and
  * the target (a circle shape that should be targeted by the player) depends on the current Level.
  */
-public class GameView extends SurfaceView implements SurfaceHolder.Callback {
+public class GameView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     private GameThread gameThread;
 
@@ -39,7 +41,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
 
         gameThread = new GameThread(getHolder(), this);
+
         setFocusable(true);
+        setFocusableInTouchMode(true);
+        this.setOnTouchListener(this);
 
         score = 0;
         levelNumber = 1;
@@ -100,10 +105,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    public void onTouch() {
-
-    }
-
     /**
      * Draws the game elements and their current positions to the screen.
      * @param canvas the canvas used to draw images to the screen
@@ -118,5 +119,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
 
         drawingManager.drawInterface(canvas, score, levelNumber);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        currentLevel.onTouch(x, y);
+        return false;
     }
 }
