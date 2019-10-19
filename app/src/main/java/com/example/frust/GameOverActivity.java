@@ -59,8 +59,7 @@ public class GameOverActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = inputText.getText().toString();
-                //Intent intent = new Intent(view.getContext(), HighscoresActivity.class);
-                Intent intent = new Intent(view.getContext(), GameActivity.class);
+                Intent intent = new Intent(view.getContext(), HighscoresActivity.class);
                 intent.putExtra("name", name);
                 intent.putExtra("score", scoreString);
                 highscoreManager.enterNewHighscore(name, score);

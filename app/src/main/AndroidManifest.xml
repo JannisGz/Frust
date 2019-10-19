@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GameOverActivity"></activity>
+        <activity android:name=".HighscoresActivity" />
         <activity android:name=".GameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
