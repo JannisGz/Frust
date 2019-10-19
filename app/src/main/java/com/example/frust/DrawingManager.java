@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 /**
  * @author Jannis Gumz
@@ -91,15 +92,19 @@ public class DrawingManager {
      * @param enemies the FrustShapes represeting areas that must not be touched
      */
     public void drawEnemies(Canvas canvas, ArrayList<FrustShape> enemies) {
-        for (FrustShape enemy : enemies) {
-            if (enemy instanceof FrustCircle) {
-                canvas.drawCircle(enemy.getX(), enemy.getY(),
-                        ((FrustCircle) enemy).getCurrentRadius(), negativePaint);
-            } else if (enemy instanceof FrustRectangle) {
-                canvas.drawRect(enemy.getX(), enemy.getY(),
-                        enemy.getX() + ((FrustRectangle)enemy).getWidth(),
-                        enemy.getY() + ((FrustRectangle)enemy).getHeight(), negativePaint);
+        try {
+            for (FrustShape enemy : enemies) {
+                if (enemy instanceof FrustCircle) {
+                    canvas.drawCircle(enemy.getX(), enemy.getY(),
+                            ((FrustCircle) enemy).getCurrentRadius(), negativePaint);
+                } else if (enemy instanceof FrustRectangle) {
+                    canvas.drawRect(enemy.getX(), enemy.getY(),
+                            enemy.getX() + ((FrustRectangle)enemy).getWidth(),
+                            enemy.getY() + ((FrustRectangle)enemy).getHeight(), negativePaint);
+                }
             }
+        } catch (ConcurrentModificationException e) {
+            // Ignore
         }
     }
 

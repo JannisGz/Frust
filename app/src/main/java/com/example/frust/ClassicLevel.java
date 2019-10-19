@@ -44,8 +44,8 @@ public class ClassicLevel extends Level {
 
     /**
      * Checks if a given point (x,y) collides with a target, enemy or nothing. If the target is hit
-     * all circles will change their position randomly, the score, difficulty and current progress towards the
-     * goal will be increased.
+     * all circles will change their position randomly, the score, difficulty and current progress
+     * towards the goal will be increased.
      * The game will be set to game over, when an enemy is hit.
      * @param x the x coordinate of the point
      * @param y the y coordinate of the point
