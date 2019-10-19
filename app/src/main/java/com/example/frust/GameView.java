@@ -54,12 +54,11 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
 
         screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
         screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
-        currentLevel = new ClassicLevel(levelNumber,score, goal, screenWidth, screenHeight);
+        currentLevel = new SpeedTapLevel(levelNumber,score, goal, screenWidth, screenHeight);
         drawingManager = new DrawingManager(screenWidth, screenHeight);
 
         target = currentLevel.getTarget();
         enemies = currentLevel.getEnemies();
-
     }
 
     @Override
@@ -128,12 +127,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
                 if (currentLevel instanceof ClassicLevel) {
                     drawingManager.drawEnemies(canvas, enemies);
                     drawingManager.drawTarget(canvas, target);
-                    drawingManager.drawInterface(canvas, score, levelNumber);
                 } else if (currentLevel instanceof StarsAndStripesLevel) {
                     drawingManager.drawTarget(canvas, target);
                     drawingManager.drawEnemies(canvas, enemies);
-                    drawingManager.drawInterface(canvas, score, levelNumber);
+                } else if (currentLevel instanceof SpeedTapLevel) {
+                    drawingManager.drawTarget(canvas, target);
                 }
+                drawingManager.drawInterface(canvas, score, levelNumber);
             } else {
                 drawingManager.drawGameOver(canvas, score);
             }
