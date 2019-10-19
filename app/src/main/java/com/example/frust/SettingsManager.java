@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
+ * @author Jannis Gumz
  * A class that manages the settings-load/store functionality of the game using shared preferences.
  * Currently it only manages sound and music settings.
  */

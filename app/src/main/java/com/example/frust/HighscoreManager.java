@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * @author Jannis Gumz
+ * A class that manages the highscore-load/store functionality of the game using shared preferences.
+ */
 public final class HighscoreManager {
 
     private int highscore1st;
@@ -26,11 +30,21 @@ public final class HighscoreManager {
 
     private static HighscoreManager INSTANCE;
 
+    /**
+     * Creates a new HighscoreManager
+     * @param context the application context
+     */
     private HighscoreManager(Context context) {
         this.context = context;
         loadHighscore();
     }
 
+    /**
+     * Returns the HighscoreManager. This will always return the same instance. Only if no
+     * HighscoreManager exists a new object will be created.
+     * @param context the application context
+     * @return the HighscoreManager
+     */
     public static HighscoreManager getInstance(Context context) {
         if (INSTANCE == null) {
             INSTANCE = new HighscoreManager(context);
@@ -38,30 +52,54 @@ public final class HighscoreManager {
         return INSTANCE;
     }
 
+    /**
+     * @return the currently highest score
+     */
     public int getHighscore1st() {
         return highscore1st;
     }
 
+    /**
+     * @return the currently second highest score
+     */
     public int getHighscore2nd() {
         return highscore2nd;
     }
 
+    /**
+     * @return the currently lowest high score
+     */
     public int getHighscore3rd() {
         return highscore3rd;
     }
 
+    /**
+     * @return the name of the player with the highest score
+     */
     public String getName1st() {
         return name1st;
     }
 
+    /**
+     * @return the name of the player with the second highest score
+     */
     public String getName2nd() {
         return name2nd;
     }
 
+    /**
+     * @return the name of the player with the lowest high score
+     */
     public String getName3rd() {
         return name3rd;
     }
 
+    /**
+     * Checks if the new score is a new high score (i.e. the score is higher than the lowest saved
+     * high score
+     * @param score the checked score
+     * @return true if score is a new high score, else false
+     */
     public boolean isNewHighscore(int score) {
         loadHighscore();
         if (score > highscore3rd) {
@@ -70,7 +108,19 @@ public final class HighscoreManager {
         return false;
     }
 
+    /**
+     * Registers the name and score to the high score list, if the score is higher than at least
+     * the third high score. Saves the new list to shared preferences.
+     * @param name the players name
+     * @param score the players score
+     */
     public void enterNewHighscore(String name, int score) {
+        if (name == null || name.equals("")) {
+            name = "Unknown";
+        }
+        if (score < 0) {
+            score = 0;
+        }
         if (name.length() > 9) {
             name = name.substring(0,9);
         }
@@ -87,7 +137,7 @@ public final class HighscoreManager {
                 highscore3rd = highscore2nd;
                 name2nd = name;
                 highscore2nd = score;
-            } else {
+            } else if (score > highscore3rd){
                 name3rd = name;
                 highscore3rd = score;
             }
@@ -95,6 +145,9 @@ public final class HighscoreManager {
         }
     }
 
+    /**
+     * Updates the high scores stored in shared preferences to the in game values
+     */
     public void saveHighscore() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -109,6 +162,9 @@ public final class HighscoreManager {
 
     }
 
+    /**
+     * Updates the in game high scores to the values stored in shared preferences
+     */
     public void loadHighscore() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         highscore1st = sharedPreferences.getInt(HIGHSCORE_SCORE_1, 300);
