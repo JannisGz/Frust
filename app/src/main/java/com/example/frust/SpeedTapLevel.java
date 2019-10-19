@@ -39,11 +39,13 @@ public class SpeedTapLevel extends Level {
      * @param y the y coordinate of the point
      */
     @Override
-    public void onTouch(int x, int y) {
+    public boolean onTouch(int x, int y) {
         if (target.detectedCollision(x, y)) {
             target.changeCurrentRadiusBy(10);
             score += Math.max(1,Math.ceil(levelNumber/3));
+            return true;
         }
+        return false;
     }
 
     /**

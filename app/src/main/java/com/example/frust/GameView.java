@@ -31,6 +31,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     private int goal;
     private int screenWidth;
     private int screenHeight;
+    private SoundManager soundManager;
 
     private DrawingManager drawingManager;
 
@@ -63,6 +64,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
 
         target = currentLevel.getTarget();
         enemies = currentLevel.getEnemies();
+
+        soundManager = SoundManager.getInstance(getContext());
+        soundManager.playMusic();
     }
 
     @Override
@@ -102,6 +106,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
         score = currentLevel.getScore();
 
         if (currentLevel.gameover) {
+            soundManager.pauseMusic();
             gameThread.setRunning(false);
             Intent intent = new Intent(this.getContext(), GameOverActivity.class);
             intent.putExtra("score", String.valueOf(score));
@@ -180,7 +185,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     public boolean onTouch(View v, MotionEvent event) {
         int x = (int) event.getX();
         int y = (int) event.getY();
-        currentLevel.onTouch(x, y);
+        if (currentLevel.onTouch(x, y)) {
+            soundManager.playPositiveSound();
+        }
         return false;
     }
 }

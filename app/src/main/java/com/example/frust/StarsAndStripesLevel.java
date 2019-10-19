@@ -50,7 +50,7 @@ public class StarsAndStripesLevel extends Level {
      * @param y the y coordinate of the point
      */
     @Override
-    public void onTouch(int x, int y) {
+    public boolean onTouch(int x, int y) {
 
         for (FrustShape enemy: enemies) {
             if (enemy.detectedCollision(x,y)) {
@@ -67,7 +67,9 @@ public class StarsAndStripesLevel extends Level {
 
             if (speed < maxSpeed)
                 speed += 2;
+            return true;
         }
+        return false;
     }
 
     /**

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         initialize();
     }
 
+    @SuppressWarnings("all")
     private void initialize() {
         playBtn = (Button) findViewById(R.id.playBTN);
         highscoresBtn = (Button) findViewById(R.id.highscoreBTN);

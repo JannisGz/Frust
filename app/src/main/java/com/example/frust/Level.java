@@ -77,7 +77,7 @@ public abstract class Level {
     /**
      * Checks if the last touchscreen interaction hit the target, enemy or nothing.
      */
-    public abstract void onTouch(int x, int y);
+    public abstract boolean onTouch(int x, int y);
 
     /**
      * Returns whether the game is lost or still running

@@ -51,7 +51,7 @@ public class ClassicLevel extends Level {
      * @param y the y coordinate of the point
      */
     @Override
-    public void onTouch(int x, int y) {
+    public boolean onTouch(int x, int y) {
 
         for (FrustShape enemy : enemies) {
             if (enemy.detectedCollision(x, y) && !target.detectedCollision(x, y)) {
@@ -82,7 +82,9 @@ public class ClassicLevel extends Level {
             if (currentSpeed < maxSpeed) {
                 currentSpeed += speedIncrease;
             }
+            return true;
         }
+        return false;
     }
 
     /**
