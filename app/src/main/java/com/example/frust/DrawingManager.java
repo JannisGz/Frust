@@ -113,13 +113,7 @@ public class DrawingManager {
      * @param canvas represents the screen
      */
     public void drawGameOver(Canvas canvas, int score) {
-        negativePaint.setTextSize(textSizeBig);
-        negativePaint.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(String.valueOf("GAME OVER"),
-                screenWidth / 2, screenHeight / 2, negativePaint);
-        negativePaint.setTextSize(textSizeSmall);
-        canvas.drawText(String.valueOf(score + " Points"),
-                screenWidth / 2, screenHeight / 2 + screenWidth / 6, negativePaint);
+        canvas.drawColor(Color.RED);
     }
 
     /**

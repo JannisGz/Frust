@@ -1,6 +1,7 @@
 package com.example.frust;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback, View.OnTouchListener {
 
     private GameThread gameThread;
+    private Context context;
 
     private FrustCircle target;
     private ArrayList<FrustShape> enemies;
@@ -42,6 +44,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     public GameView(Context context) {
         super(context);
         getHolder().addCallback(this);
+        this.context = context;
 
         gameThread = new GameThread(getHolder(), this);
 
@@ -99,7 +102,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
         score = currentLevel.getScore();
 
         if (currentLevel.gameover) {
-            // To Do: Implement game over scenario
+            gameThread.setRunning(false);
+            Intent intent = new Intent(this.getContext(), GameOverActivity.class);
+            intent.putExtra("score", String.valueOf(score));
+            context.startActivity(intent);
         } else if (currentLevel.goalIsReached()) {
             levelNumber++;
             goal++;
@@ -132,7 +138,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
 
     /**
      * Draws the game elements and their current positions to the screen.
-     *
      * @param canvas the canvas used to draw images to the screen
      */
     @Override
