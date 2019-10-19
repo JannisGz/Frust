@@ -36,6 +36,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
      * Creates a new GameView, which represents the game screen, with its own GameThread that
      * refreshes the screen every tick (about 30 times/second).
      * Starts the game with a classic mode level.
+     *
      * @param context the application context
      */
     public GameView(Context context) {
@@ -54,7 +55,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
 
         screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
         screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
-        currentLevel = new SpeedTapLevel(levelNumber,score, goal, screenWidth, screenHeight);
+        chooseNextLevel();
         drawingManager = new DrawingManager(screenWidth, screenHeight);
 
         target = currentLevel.getTarget();
@@ -100,15 +101,38 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
         if (currentLevel.gameover) {
             // To Do: Implement game over scenario
         } else if (currentLevel.goalIsReached()) {
-            // To Do: Improve next level choosing
-            levelNumber ++;
-            goal ++;
-            currentLevel = new StarsAndStripesLevel(levelNumber,score, goal, screenWidth, screenHeight);
+            levelNumber++;
+            goal++;
+            chooseNextLevel();
+        }
+    }
+
+    /**
+     * Chooses the next Level. There are three different types of levels: ClassicLevel,
+     * StarsAndStripesLevel and SpeedTapLevel. A game starts with a ClassicLevel and loops through
+     * the other levels every time a goal is reached.
+     */
+    private void chooseNextLevel() {
+        int modulo = levelNumber % 3;
+        switch (modulo) {
+            case 1:
+                currentLevel = new ClassicLevel(levelNumber, score, goal, screenWidth, screenHeight);
+                break;
+            case 2:
+                currentLevel = new StarsAndStripesLevel(levelNumber, score, goal, screenWidth, screenHeight);
+                break;
+            case 0:
+                currentLevel = new SpeedTapLevel(levelNumber, score, goal, screenWidth, screenHeight);
+                break;
+            default:
+                currentLevel = new ClassicLevel(levelNumber, score, goal, screenWidth, screenHeight);
+                break;
         }
     }
 
     /**
      * Draws the game elements and their current positions to the screen.
+     *
      * @param canvas the canvas used to draw images to the screen
      */
     @Override
@@ -121,8 +145,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
 
         if (currentLevel.interludeIsRunning()) {
             drawingManager.drawInterlude(canvas, levelNumber, currentLevel.getInterludeText());
-        }
-        else {
+        } else {
             if (!currentLevel.isGameover()) {
                 if (currentLevel instanceof ClassicLevel) {
                     drawingManager.drawEnemies(canvas, enemies);
@@ -143,7 +166,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback, Vie
     /**
      * Registers touch events on the screen. Gets the coordinates of the touch events and checks for
      * collision with the target and enemies.
-     * @param v the view
+     *
+     * @param v     the view
      * @param event the touch event
      * @return always false. Does not matter for this application
      */
