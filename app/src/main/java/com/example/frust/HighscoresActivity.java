@@ -36,8 +36,7 @@ public class HighscoresActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(view.getContext(), MainActivity.class));
-                startActivity(new Intent(view.getContext(), GameActivity.class));
+                startActivity(new Intent(view.getContext(), MainActivity.class));
             }
         });
 
@@ -54,8 +53,7 @@ public class HighscoresActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        //startActivity(new Intent(this, MainActivity.class));
-        startActivity(new Intent(this, GameActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     private void updateLeaderbord() {

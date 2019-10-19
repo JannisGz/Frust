@@ -98,7 +98,6 @@ public class GameOverActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        //startActivity(new Intent(this, MainActivity.class));
-        startActivity(new Intent(this, GameActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 }
