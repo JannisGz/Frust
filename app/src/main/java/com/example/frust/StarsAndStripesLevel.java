@@ -37,8 +37,8 @@ public class StarsAndStripesLevel extends Level {
                     displayWidth, displayHeight, displayWidth, displayHeight/8));
         }
 
-        speed = 20 + levelNumber*2;
-        maxSpeed = 50 + levelNumber*2;
+        speed = 20 + levelNumber*3;
+        maxSpeed = 50 + levelNumber*3;
         interludeText = "Tap the falling ball";
     }
 
@@ -66,7 +66,7 @@ public class StarsAndStripesLevel extends Level {
             target.setY(- target.getCurrentRadius() - displayHeight/10);
 
             if (speed < maxSpeed)
-                speed += 2;
+                speed += 1;
             return true;
         }
         return false;

@@ -35,10 +35,10 @@ public class ClassicLevel extends Level {
 
         enemyCount = 0;
         maxEnemies = Math.max(5, levelNumber * 2);
-        minSpeed = Math.max(3, levelNumber * 2);
-        maxSpeed = Math.max(8,  4 * levelNumber);
+        minSpeed = Math.max(3, (int) (levelNumber * 1.5));
+        maxSpeed = Math.max(8,  levelNumber * 2);
         currentSpeed = minSpeed;
-        speedIncrease = 0.15f * (int) (levelNumber / 4 + 1);
+        speedIncrease = 0.1f * (int) (levelNumber / 4 + 1);
 
     }
 
