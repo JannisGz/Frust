@@ -6,14 +6,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button playBtn;
-    private Button settingBtn;
-    private Button highscoresBtn;
+    private ImageView playBtn;
+    private ImageView settingBtn;
+    private ImageView highscoresBtn;
 
 
     @Override
@@ -27,11 +28,10 @@ public class MainActivity extends AppCompatActivity {
         initialize();
     }
 
-    @SuppressWarnings("all")
     private void initialize() {
-        playBtn = (Button) findViewById(R.id.playBTN);
-        highscoresBtn = (Button) findViewById(R.id.highscoreBTN);
-        settingBtn = (Button) findViewById(R.id.settingsBTN);
+        playBtn = (ImageView) findViewById(R.id.playBTN);
+        highscoresBtn = (ImageView) findViewById(R.id.highscoreBTN);
+        settingBtn = (ImageView) findViewById(R.id.settingsBTN);
 
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override

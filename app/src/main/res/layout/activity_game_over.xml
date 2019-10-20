@@ -17,7 +17,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="GAME OVER"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@android:color/holo_red_light"
         android:textSize="50sp"
         android:textStyle="bold"
         app:fontFamily="sans-serif-black"
@@ -38,7 +38,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="999"
-        android:textColor="#FFFFFF"
+        android:textColor="@android:color/holo_red_light"
         android:textSize="25sp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +58,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="New Highscore!"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@android:color/holo_red_light"
         android:textSize="25sp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,7 +119,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputText"
         app:layout_constraintVertical_bias="0.251"
-        app:srcCompat="@android:drawable/ic_menu_send"
+        app:srcCompat="@mipmap/send_icon"
         tools:visibility="visible" />
 
     <ImageButton
@@ -148,6 +148,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventText"
         app:layout_constraintVertical_bias="0.251"
-        app:srcCompat="@android:drawable/ic_menu_rotate" />
+        app:srcCompat="@mipmap/replay_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
