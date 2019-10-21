@@ -22,6 +22,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     private SettingsManager settingsManager;
 
+    /**
+     * Runs when the activity is created
+     * @param savedInstanceState the current activity state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

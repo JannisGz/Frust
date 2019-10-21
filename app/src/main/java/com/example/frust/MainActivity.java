@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageView highscoresBtn;
 
 
+    /**
+     * Runs when the activity is created
+     * @param savedInstanceState the current activity state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

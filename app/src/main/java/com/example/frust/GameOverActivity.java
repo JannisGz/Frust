@@ -30,6 +30,10 @@ public class GameOverActivity extends AppCompatActivity {
     private HighscoreManager highscoreManager;
     private SoundManager soundManager;
 
+    /**
+     * Runs when the activity is created
+     * @param savedInstanceState the current activity state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
