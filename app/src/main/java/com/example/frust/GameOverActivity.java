@@ -9,9 +9,13 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Jannis Gumz
+ * An activity that manages the game over settings. Displays either a replay button or a textfield
+ * to enter the players name if a new highscore has been reached.
+ */
 public class GameOverActivity extends AppCompatActivity {
 
     private ImageButton retryBtn;
@@ -41,6 +45,10 @@ public class GameOverActivity extends AppCompatActivity {
         initialize();
     }
 
+    /**
+     * Binds the activities buttons to variables and sets up OnClickListeners for them. Displays the
+     * submit button and name text field if a new high score has been achieved or the retry button.
+     */
     private void initialize() {
         retryBtn = findViewById(R.id.retryButton);
         submitBtn = findViewById(R.id.submitButton);
@@ -96,6 +104,9 @@ public class GameOverActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Runs when the back button of the smart phone is pressed. Starts the mainActivity.
+     */
     @Override
     public void onBackPressed(){
         startActivity(new Intent(this, MainActivity.class));

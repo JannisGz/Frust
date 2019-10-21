@@ -10,6 +10,12 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Jannis Gumz
+ * An activity that gets displayed on startup and when the back button is pressed in other
+ * activities. Displays a play button to start the GameActivity, a gear button to start the
+ * SettingsActivity and a medal button to display the HighscoresActivity
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ImageView playBtn;
@@ -28,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         initialize();
     }
 
+    /**
+     * Binds the activities buttons to variables and sets up OnClickListeners for them.
+     */
     private void initialize() {
         playBtn = (ImageView) findViewById(R.id.playBTN);
         highscoresBtn = (ImageView) findViewById(R.id.highscoreBTN);
@@ -55,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Runs when the back button of the smart phone is pressed. Starts the mainActivity.
+     */
     @Override
     public void onBackPressed(){
         startActivity(new Intent(this, MainActivity.class));

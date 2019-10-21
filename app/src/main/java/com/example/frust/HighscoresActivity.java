@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Jannis Gumz
+ * An activity that displays the current leader board
+ */
 public class HighscoresActivity extends AppCompatActivity {
 
     Button backBtn;
@@ -51,11 +55,17 @@ public class HighscoresActivity extends AppCompatActivity {
         updateLeaderbord();
     }
 
+    /**
+     * Runs when the back button of the smart phone is pressed. Starts the mainActivity.
+     */
     @Override
     public void onBackPressed(){
         startActivity(new Intent(this, MainActivity.class));
     }
 
+    /**
+     * Loads data from the the high score manager into the activity
+     */
     private void updateLeaderbord() {
         textViewName1st.setText(highscoreManager.getName1st());
         textViewScore1st.setText(String.valueOf(highscoreManager.getHighscore1st()));

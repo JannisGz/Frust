@@ -10,7 +10,10 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+/**
+ * @author Jannis Gumz
+ * An activity that manages sound and music settings
+ */
 public class SettingsActivity extends AppCompatActivity {
 
     private Button backBtn;
@@ -56,6 +59,9 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Runs when the back button of the smart phone is pressed. Starts the mainActivity.
+     */
     @Override
     public void onBackPressed(){
         startActivity(new Intent(this, MainActivity.class));
