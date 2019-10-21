@@ -49,6 +49,7 @@ public class ClassicLevel extends Level {
      * The game will be set to game over, when an enemy is hit.
      * @param x the x coordinate of the point
      * @param y the y coordinate of the point
+     * @return true if the target was hit
      */
     @Override
     public boolean onTouch(int x, int y) {

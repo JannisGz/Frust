@@ -37,6 +37,7 @@ public class SpeedTapLevel extends Level {
      * the size of the circle and the score will be increased.
      * @param x the x coordinate of the point
      * @param y the y coordinate of the point
+     * @return true if the target was hit
      */
     @Override
     public boolean onTouch(int x, int y) {

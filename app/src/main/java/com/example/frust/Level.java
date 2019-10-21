@@ -76,6 +76,7 @@ public abstract class Level {
 
     /**
      * Checks if the last touchscreen interaction hit the target, enemy or nothing.
+     * @return true if the target was hit
      */
     public abstract boolean onTouch(int x, int y);
 
