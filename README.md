@@ -13,7 +13,11 @@ computer science student at the Technical University Dresden.
 
 <a name="introduction"/></a>
 ## Introduction
-<img src="https://github.com/JannisGz/Frust/blob/master/doc/level1.png" width="300" alt="Screenshot for level 1" float="center">
+<p  align="center" float="left">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level1.png" width="200" alt="Screenshot for level 1">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level2.png" width="200" alt="Screenshot for level 2">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level3.png" width="200" alt="Screenshot for level 3">
+</p>
 
 Frust is all about making correct decisions, coupled with an ever increasing number of options and
 decreasing decision making time. There are many different levels, but the core concept is the same
@@ -48,8 +52,9 @@ prompted to enter his name in a Highscore list.
 Before each level, the current level number and a short description is displayed.
 
 #### Shrinking and Growing
-
-<img src="https://github.com/JannisGz/Frust/blob/master/doc/level1.png" width="300" alt="Screenshot for level 1" float="center">
+<p align="center" float="left">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level1.png" width="250" alt="Screenshot for level 1">
+</p>
 
 This is the first level of the game and the 'original' idea behind Frust. A green circle appears at
 a random position on the screen. When this target is tapped, it will disappear and a new target will
@@ -65,7 +70,9 @@ faster.
 
 #### Falling ball
 
-<img src="https://github.com/JannisGz/Frust/blob/master/doc/level2.png" width="300" alt="Screenshot for level 2" float="center">
+<p algin="center" float="left">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level2.png" width="250" alt="Screenshot for level 2">
+</p>
 
 
 In the second level, a green ball "falls" from the top of the screen towards the bottom. The earlier
@@ -78,8 +85,9 @@ successfully "caught", the speed of both the falling ball and the other shapes i
 
 #### Speed tapping
 
-<img src="https://github.com/JannisGz/Frust/blob/master/doc/level3.png" width="300" alt="Screenshot for level 3" float="center">
-
+<p algin="center" float="left">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level3.png" width="250" alt="Screenshot for level 3">
+</p>
 
 This last level includes only a single green circle, that will slowly increase in size. It is meant
 as a bonus round for completing the other levels. However, how many bonus points are awarded to the
@@ -88,7 +96,7 @@ disappear when tapped, but simply increase even more in size. The bigger the tar
 points are gained with each tap.
 
 This level will end automatically after a few seconds and restart the level cycle.
-<p float="center">
-  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level1desc.png" width="300" alt="Screenshot of the interlude screen before level 1">
-  <img src="https://github.com/JannisGz/Frust/blob/master/doc/gameover.png" width="300" alt="Screenshot of the Game Over Screen">
+<p align="center" float="left">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/level1desc.png" width="250" alt="Screenshot of the interlude screen before level 1">
+  <img src="https://github.com/JannisGz/Frust/blob/master/doc/gameover.png" width="250" alt="Screenshot of the Game Over Screen">
 </p>
