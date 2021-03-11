@@ -70,7 +70,7 @@ faster.
 
 #### Falling ball
 
-<p algin="center" float="left">
+<p align="center" float="left">
   <img src="https://github.com/JannisGz/Frust/blob/master/doc/level2.png" width="250" alt="Screenshot for level 2">
 </p>
 
@@ -85,7 +85,7 @@ successfully "caught", the speed of both the falling ball and the other shapes i
 
 #### Speed tapping
 
-<p algin="center" float="left">
+<p align="center" float="left">
   <img src="https://github.com/JannisGz/Frust/blob/master/doc/level3.png" width="250" alt="Screenshot for level 3">
 </p>
 
